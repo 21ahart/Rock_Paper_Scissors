@@ -11,6 +11,10 @@ import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.Color;
 
+/**
+ * The RockPaperScissorsFrame class represents the main window for the Rock Paper Scissors game.
+ * It extends JFrame and sets up the GUI components and event handling for the game.
+ */
 public class RockPaperScissorsFrame extends JFrame {
     private static int[] scores = {0, 0, 0};
     private static int[] playerChoicesCount = {0, 0, 0};
@@ -23,6 +27,10 @@ public class RockPaperScissorsFrame extends JFrame {
 
     private Strategy strategy;
 
+    /**
+     * Constructs a new RockPaperScissorsFrame.
+     * Initializes the GUI components and sets up the layout and event handling.
+     */
     public RockPaperScissorsFrame() {
         strategy = new StrategyImpl();
         
@@ -85,22 +93,44 @@ public class RockPaperScissorsFrame extends JFrame {
         add(scrollPane, BorderLayout.CENTER);
     }
 
+    /**
+     * Handles the event when the rock button is clicked.
+     * Initiates a game round with the player's choice as rock.
+     */
     private void rockButtonClicked() {
         playGame(0);
     }
 
+    /**
+     * Handles the event when the paper button is clicked.
+     * Initiates a game round with the player's choice as paper.
+     */
     private void paperButtonClicked() {
         playGame(1);
     }
 
+    /**
+     * Handles the event when the scissors button is clicked.
+     * Initiates a game round with the player's choice as scissors.
+     */
     private void scissorsButtonClicked() {
         playGame(2);
     }
 
+    /**
+     * Handles the event when the quit button is clicked.
+     * Exits the application.
+     */
     private void quitButtonClicked() {
         System.exit(0);
     }
 
+    /**
+     * Plays a round of the Rock Paper Scissors game.
+     * Determines the computer's move, updates the scores, and displays the result.
+     *
+     * @param playerChoice the player's choice (0 for rock, 1 for paper, 2 for scissors)
+     */
     private void playGame(int playerChoice) {
         int computerChoice = strategy.determineMove(playerChoicesCount, playerChoice, lastPlayerChoice);
         playerChoicesCount[playerChoice]++;
@@ -131,7 +161,7 @@ public class RockPaperScissorsFrame extends JFrame {
                     resultArea.append("Scissors cuts Paper. (Computer wins)\n");
                     break;
                 case 2:
-                    resultArea.append("Rock bresks Scissors. (Computer wins)\n");
+                    resultArea.append("Rock breaks Scissors. (Computer wins)\n");
                     break;
             }
         }
