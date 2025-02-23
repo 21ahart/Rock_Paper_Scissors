@@ -21,7 +21,11 @@ public class RockPaperScissorsFrame extends JFrame {
     private JTextField tiesField;
     private JTextArea resultArea;
 
+    private Strategy strategy;
+
     public RockPaperScissorsFrame() {
+        strategy = new StrategyImpl();
+        
         setTitle("Rock Paper Scissors");
         setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -98,7 +102,7 @@ public class RockPaperScissorsFrame extends JFrame {
     }
 
     private void playGame(int playerChoice) {
-        int computerChoice = RockPaperScissorsCPU.getComputerChoice(playerChoicesCount, playerChoice, lastPlayerChoice);
+        int computerChoice = strategy.determineMove(playerChoicesCount, playerChoice, lastPlayerChoice);
         playerChoicesCount[playerChoice]++;
 
         if (playerChoice == computerChoice) {

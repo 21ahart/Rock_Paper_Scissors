@@ -1,11 +1,9 @@
 import java.util.Random;
 
-public class RockPaperScissorsCPU {
+public class StrategyImpl implements Strategy {
 
-    public RockPaperScissorsCPU() {
-    }
-
-    public static int getComputerChoice(int[] playerChoicesCount, int currentPlayerChoice, int lastPlayerChoice) {
+    @Override
+    public int determineMove(int[] playerChoicesCount, int currentPlayerChoice, int lastPlayerChoice) {
         Random random = new Random();
         int randomNumber = random.nextInt(100);
         int methodChoice;
@@ -35,7 +33,7 @@ public class RockPaperScissorsCPU {
         return -1;
     }
 
-    private static int cheatChoice(int playerChoice) {
+    private int cheatChoice(int playerChoice) {
         int choice = (playerChoice + 1) % 3;
 
         System.out.println("Cheat choice: " + choice); // Debugging
@@ -45,7 +43,7 @@ public class RockPaperScissorsCPU {
         
     }
 
-    private static int leastUsedChoice(int[] playerChoicesCount) {
+    private int leastUsedChoice(int[] playerChoicesCount) {
         int min = Integer.MAX_VALUE;
         int minIndex = 0;
 
@@ -61,7 +59,7 @@ public class RockPaperScissorsCPU {
         return minIndex;
     }
 
-    private static int mostUsedChoice(int[] playerChoicesCount) {
+    private int mostUsedChoice(int[] playerChoicesCount) {
         int max = Integer.MIN_VALUE;
         int maxIndex = 0;
 
